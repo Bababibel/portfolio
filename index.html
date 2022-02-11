@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop bgauthier.fr</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-desktop-mode="windows">
+    <div class="loading-screen" id="loading-screen">
+        <p id="loading-p">Loading session...</p>
+        <div id="indicator"><div id="loading-progress"></div></div>
+    </div>
+    <header>
+        <div class="left">
+            <p>bgauthier.fr</p>
+        </div>
+        <div class="center">
+            <p id="date"></p>
+            <p id="clock"></p>
+        </div>
+        <!-- <div class="right">
+        </div> -->
+    </header>
+    <nav>
+        <ul class="taskbar">
+            <li style="background-image: url('../images/linkedin.png');" data-desc="My LinkedIn profile">
+                <a href="https://www.linkedin.com/in/baptiste-gauthier-cybersecurity/" target="_blank"></a>
+            </li>
+            <li style="background-image: url('../images/email.png');" data-desc="Contact me by Email">
+                <a href="mailto:contact@bgauthier.fr" target="_blank"></a>
+            </li>
+            <li style="background-image: url('../images/cv_en.png');" data-desc="Download my English CV/Resume">
+                <a href="../files/baptiste_gauthier_cv_en.pdf" target="_blank"></a>
+            </li>
+            <li style="background-image: url('../images/cv_fr.png');" data-desc="Download my French CV/Resume">
+                <a href="../files/baptiste_gauthier_cv_fr.pdf" target="_blank"></a>
+            </li>
+        </ul>
+        <span><a id="signature" onclick="desktopMode()"></a></span>
+    </nav>
+    <main>
+        <a class="icon" style="background-image: url('../images/education.png');" data-title="Education" onclick="togglePanel('education')"></a>
+        <a class="icon" style="background-image: url('../images/briefcase.png');" data-title="Work experience" onclick="togglePanel('work-experience')"></a>
+
+        <a class="icon" style="background-image: url('../images/projects.png'); grid-row: 4; grid-column: 3;" data-title="Personal & School projects" onclick="togglePanel('projects')"></a>
+        <a class="icon" style="background-image: url('../images/skills.png'); grid-row: 1; grid-column: 3;" data-title="Skills" onclick="togglePanel('skills')"></a>
+
+        <div id="panel" data-panel-opened="false">
+            <div class="panel-header">
+                <h5 id="panel-title"></h5>
+                <a onclick="togglePanel()" id="cross"></a>
+            </div>
+            <div id="content">
+                <div id="education">
+                    <h4>2023</h4>
+                    <p>.....</p>
+                    <h6>Currently in my 4<sup>rth</sup> year</h6>
+                    <details>
+                        <summary>Cybersecurity engineering school<img src="images/insa.png" alt="INSA"></summary>
+                        <p>5 years to become a versatile I.T. engineer, with security specialisation</p>
+                        <ul>
+                            <li>2 years of preparatory class (scientific course : mathematics, physics, mecanics, logic...)</li>
+                            <li>Programming in C, Python, Object-Oriented : Java, Python</li>
+                            <li>Database (SQL)</li>
+                            <li>Cryptography</li>
+                            <li>System administration (UNIX & Windows)</li>
+                            <li>Networking in general (protocols, architecture...)</li>
+                            <li>School projects: see <a onclick="togglePanel('projects')">Personnal & School projects section!</a></li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2018</h4>
+                    <p>.....</p>
+                    <details>
+                        <summary>Baccalauréat / A Level (High school degree)</summary>
+                        <p>Obtained with high distinction</p>
+                        <ul>
+                            <li>Scientific course</li>
+                            <li>Engineering sciences specialisation</li>
+                            <li>I.T. option (initiation to programming and small game project, in Python)</li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2016</h4>
+                </div>
+                <div id="work-experience">
+                    <h4>Today</h4>
+                    <p>.....</p>
+                    <h6>Since Feb 2021</h6>
+                    <details>
+                        <summary>Private I.T. teacher<img src="images/teaching.png" alt="Teaching illustration"></summary>
+                        <p>As a freelancer (self-employed), I offer I.T. and scientific fields online tuition</p>
+                        <ul>
+                            <li>Initiation to programming</li>
+                            <li>Project monitoring</li>
+                            <li>School & professional retraining support (I.T. related)</li>
+                            <li>Programming languages:<br>
+                                <ul>
+                                    <li>Python</li>
+                                    <li>C</li>
+                                    <li>C++, C#</li>
+                                    <li>Web : HTML, CSS, JavaScript, SQL, PHP</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </details>
+                    <p>...</p>
+                    <h6>From Jan 2021 to Jan 2022</h6>
+                    <details>
+                        <summary>Corporate Relations Officer - Junior Enterprise<img src="images/iris_insa.png" alt="Iris INSA logo"></summary>
+                        <p>I joined my school's Junior-Enterprise <strong>Iris INSA</strong> as a volunteer in order to help external clients to formalise their needs</p>
+                        <ul>
+                            <li>Main interface between clients and the company during 2021</li>
+                            <li>Establishment of technical specifications</li>
+                            <li>Basic administrative tasks</li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2022</h4>
+                    <p>.....</p>
+                    <h6>(Summer) Jul - Aug 2021</h6>
+                    <details>
+                        <summary>Warehouse worker & Web developer<img src="images/box.png" alt="Warehouse illustration"> <img src="images/internet.png" alt="Warehouse illustration"></summary>
+                        <p></p>
+                        <ul>
+                            <li>Web Application development to improve previous Android application experience</li>
+                            <li>Reception, preparation of orders</li>
+                            <li>Warehouse maintenance with autonomy</li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2021</h4>
+                    <p>.....</p>
+                    <h6>(Summer) Jul - Aug 2020</h6>
+                    <details>
+                        <summary>Warehouse worker & Mobile Application developer<img src="images/box.png" alt="Warehouse illustration"> <img src="images/smartphone.png" alt="Warehouse illustration"></summary>
+                        <p></p>
+                        <ul>
+                            <li>Android application development (process automation)</li>
+                            <li>Reception, preparation of orders</li>
+                            <li>Warehouse maintenance with autonomy</li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2020</h4>
+                    <p>.....</p>
+                    <h6>(Summer) Jul - Aug 2019</h6>
+                    <details>
+                        <summary>Warehouse worker<img src="images/box.png" alt="Warehouse illustration"></summary>
+                        <p></p>
+                        <ul>
+                            <li>Reception, preparation of orders</li>
+                            <li>Warehouse maintenance with autonomy</li>
+                        </ul>
+                    </details>
+                    <p>.....</p>
+                    <h4>2019</h4>
+                </div>
+                <div id="projects">
+                    <h2>School projects</h2>
+                    <div class="card">
+                        <a style="background-image: url('images/python.png'), url('images/game.png')"></a>
+                        <div class="desc">
+                            <h6>Game development as a team of 5 students</h6>
+                            <ul>
+                                <li>Python language</li>
+                                <li>GIT</li>
+                                <li>Multidisciplinary approch</li>
+                                <li>Team work</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card card-inverted">
+                        <a style="background-image: url('images/c.png'), url('images/multiplayer.png')"></a>
+                        <div class="desc">
+                            <h6>Multiplayer implementation in the previous Python game</h6>
+                            <ul>
+                                <li>Python & C languages</li>
+                                <li>Custom-made protocols using TCP</li>
+                                <li>Socket management, system calls</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a style="background-image: none, url('images/database.png')"></a>
+                        <div class="desc">
+                            <h6>Database anynomisation & reidentify attacks</h6>
+                            <ul>
+                                <li>Competition within the school between all the students</li>
+                                <li>Data analysis</li>
+                                <li>Custom anonymisation algorithms implemented in Python</li>
+                                <li>Reidentification of other's teams databases as challenges</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <h2>Personal projects</h2>
+                    <div class="card card-inverted">
+                        <a style="background-image: none, url('images/spiderman-meme.jpg')"></a>
+                        <div class="desc">
+                            <h6>This website 🤯</h6>
+                            <ul>
+                                <li>Cybersecurity... And more ! Front-end, back-end... I love web applications</li>
+                                <li>Pure HTML, CSS, JavaScript: no framework or external library!!</li>
+                                <li>Frequently updated & improved with new <s>useless</s>  features</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a style="background-image: none, url('images/briefcase.png')"></a>
+                        <div class="desc">
+                            <h6>Professional projects</h6>
+                            <ul>
+                                <li>I consider my professional projects as personal ones, because it is my own initiative ! See <a onclick="togglePanel('work-experience')">Work experience section</a></li>
+                                <li>Android application made with C# (Xamarin Framework)</li>
+                                <li>Web application</li>
+                                <li>Private I.T. teaching</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card card-inverted">
+                        <a style="background-image: none, url('images/nuit_de_l_info.png')"></a>
+                        <div class="desc">
+                            <h6>La nuit de l'info (National I.T. event)</h6>
+                            <ul>
+                                <li>As a team, build an entire web application in one night (from 6pm to 8am)</li>
+                                <li>Participated in this event in 2020, then in 2021 as the team leader</li>
+                                <li>Symfony (PHP) Framework for the back-end, HTML/CSS/JavaScript for the front-end</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="skills">
+                    <h3>Programming</h3>
+                    <section class="progress-bars">
+                        <label data-level="Experimented">Python<progress max="100" value="95" class="green-1"></progress></label>
+                        <label data-level="Advanced">C<progress max="100" value="80" class="green-2"></progress></label>
+                        <label data-level="Advanced">HTML / CSS / JavaScript<progress max="100" value="80" class="green-2"></progress></label>
+                        <label data-level="Comfortable">PHP<progress max="100" value="70" class="green-3"></progress></label>
+                        <label data-level="Comfortable">C# & Java<progress max="100" value="50" class="green-3"></progress></label>
+                        <label data-level="Comfortable">C++<progress max="100" value="50" class="green-3"></progress></label>
+                    </section>
+                    <h3>I.T. fundamentals</h3>
+                    <section class="progress-bars">
+                        <label data-level="Experimented">UNIX environment (Linux...)<progress max="100" value="90" class="green-1"></progress></label>
+                        <label data-level="Experimented">Network protocols<progress max="100" value="90" class="green-1"></progress></label>
+                        <label data-level="Advanced">Cryptography<progress max="100" value="80" class="green-2"></progress></label>
+                        <label data-level="Advanced">Algorithm<progress max="100" value="80" class="green-2"></progress></label>
+                        <label data-level="Comfortable">Database (SQL, RDBMS)<progress max="100" value="75" class="green-2"></progress></label>
+                    </section>
+                    <h3>Soft skills</h3>
+                    <section class="words">
+                        <p>Pragmatic</p>
+                        <p></p>
+                        <p></p>
+                        <p>Stress-resistant</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-animation">
+            <h1>Baptiste GAUTHIER</h1>
+            <h1>Cybersecurity student</h1>
+        </div>
+    </main>
+
+    <script src="js/clock_date.js"></script>
+    <script src="js/interactions.js"></script>
+</body>
+</html>

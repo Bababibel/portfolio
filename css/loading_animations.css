@@ -1,0 +1,110 @@
+@-webkit-keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@-webkit-keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@-webkit-keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=loading_animations.css.map */

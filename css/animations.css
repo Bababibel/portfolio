@@ -1,0 +1,106 @@
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    background-color: red;
+  }
+  50% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+}
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    background-color: red;
+  }
+  50% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+}
+
+@-webkit-keyframes tremble {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-box-shadow: inherit inherit inherit 50px;
+            box-shadow: inherit inherit inherit 50px;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  65%, 75%, 85%, 95% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+}
+
+@keyframes tremble {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-box-shadow: inherit inherit inherit 50px;
+            box-shadow: inherit inherit inherit 50px;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  65%, 75%, 85%, 95% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+}
+
+@-webkit-keyframes hoverMainIcon {
+  0% {
+  }
+  100% {
+    -webkit-transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2) rotate(360deg);
+  }
+}
+
+@keyframes hoverMainIcon {
+  0% {
+  }
+  100% {
+    -webkit-transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2) rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+/*# sourceMappingURL=animations.css.map */

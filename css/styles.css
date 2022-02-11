@@ -1,0 +1,1000 @@
+@charset "UTF-8";
+@import url("../fonts/*");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(45deg, #000c8e 0%, #9f1f1f 50%, #543800 100%);
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5rem auto;
+      grid-template-columns: 5rem auto;
+  -ms-grid-rows: 1.8rem auto;
+      grid-template-rows: 1.8rem auto;
+  overflow: hidden;
+}
+
+body .loading-screen {
+  position: absolute;
+  background-color: #181818;
+  -webkit-animation: loading-fade-background 2s 3s forwards;
+          animation: loading-fade-background 2s 3s forwards;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+
+body .loading-screen #loading-p {
+  font-size: 2rem;
+  -webkit-animation: loading-fade 1s 2s forwards, shine 2s;
+          animation: loading-fade 1s 2s forwards, shine 2s;
+}
+
+body .loading-screen #indicator {
+  position: relative;
+  -webkit-animation: loading-fade 1s 2s forwards;
+          animation: loading-fade 1s 2s forwards;
+  width: 12rem;
+  height: 1.2rem;
+  border-radius: 0.6rem;
+  background-color: black;
+  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 0 1rem;
+          box-shadow: rgba(64, 64, 64, 0.5) 0 0 1rem;
+}
+
+body .loading-screen #indicator #loading-progress {
+  -webkit-animation: loading-bar 2s 0s forwards;
+          animation: loading-bar 2s 0s forwards;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  height: 0.8rem;
+  border-radius: 0.4rem;
+  background-color: green;
+  z-index: 101;
+}
+
+body header {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / 3;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  background-color: rgba(32, 32, 32, 0.95);
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  padding-left: 1rem;
+}
+
+body header .center {
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+
+body header .right {
+  justify-self: flex-end;
+  -ms-flex-item-align: initial;
+      -ms-grid-row-align: initial;
+      align-self: initial;
+  height: 100%;
+}
+
+body nav {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+}
+
+body nav ul.taskbar {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+}
+
+body nav ul.taskbar > li {
+  position: relative;
+  margin: 5%;
+  aspect-ratio: 1;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+}
+
+body nav ul.taskbar > li:hover {
+  -webkit-box-shadow: rgba(255, 255, 255, 0.5) 0 0 2px;
+          box-shadow: rgba(255, 255, 255, 0.5) 0 0 2px;
+  background-color: rgba(128, 128, 128, 0.5);
+  cursor: pointer;
+}
+
+body nav ul.taskbar > li:hover::before {
+  content: attr(data-desc);
+  position: absolute;
+  -webkit-transform: translateX(5.6rem) translateY(50%);
+          transform: translateX(5.6rem) translateY(50%);
+  z-index: 1;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: rgba(32, 32, 32, 0.95);
+  border-radius: 4px;
+  padding: 0.5rem;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.5) 0 0 3px;
+          box-shadow: rgba(255, 255, 255, 0.5) 0 0 3px;
+}
+
+body nav ul.taskbar > li:hover:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(4.88rem) translateY(1.44rem);
+          transform: translateX(4.88rem) translateY(1.44rem);
+  border-top: 0.8rem solid transparent;
+  border-bottom: 0.8rem solid transparent;
+  border-right: 0.8rem solid rgba(32, 32, 32, 0.95);
+}
+
+body nav ul.taskbar > li > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+body nav > span {
+  justify-self: flex-end;
+  width: 5rem;
+  height: 5rem;
+  -webkit-animation: tremble 3s 0s infinite ease-in-out;
+          animation: tremble 3s 0s infinite ease-in-out;
+}
+
+body nav > span:hover {
+  -webkit-animation: none;
+          animation: none;
+}
+
+body nav > span:hover:after {
+  content: "🔄 Change operating system 🔄";
+  position: absolute;
+  -webkit-transform: translateX(10%) translateY(-70%);
+          transform: translateX(10%) translateY(-70%);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-box-shadow: rgba(128, 128, 128, 0.5) 0 0 5px;
+          box-shadow: rgba(128, 128, 128, 0.5) 0 0 5px;
+  text-align: center;
+  padding: 1em;
+  border-radius: 0.5em;
+  border-bottom-left-radius: 0;
+  background-color: rgba(32, 32, 32, 0.95);
+}
+
+body nav > span a#signature {
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+body nav > span a#signature:before {
+  content: "";
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: url("../images/windows10.png") no-repeat;
+  background-size: 70%;
+  background-position: center;
+}
+
+body nav > span a#signature:hover, body nav > span a#signature:active {
+  -webkit-animation: hoverMainIcon 1s 0s forwards;
+          animation: hoverMainIcon 1s 0s forwards;
+}
+
+body main {
+  -ms-grid-column: 2;
+  grid-column: 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  position: relative;
+  display: -ms-grid;
+  display: grid;
+  padding: 0.5rem;
+  grid-gap: 1rem;
+  -ms-grid-columns: (8rem)[auto-fit];
+      grid-template-columns: repeat(auto-fit, 8rem);
+  -ms-grid-rows: (8rem)[auto-fit];
+      grid-template-rows: repeat(auto-fit, 8rem);
+}
+
+body main:before {
+  content: "";
+  position: absolute;
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40%;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+}
+
+body main > a.icon {
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: 50% 28%;
+  position: relative;
+}
+
+body main > a.icon:hover {
+  background-color: rgba(32, 32, 32, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+body main > a.icon:active {
+  background-color: rgba(32, 32, 32, 0.5);
+}
+
+body main > a.icon:after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 0.4rem;
+  text-align: center;
+  width: 8rem;
+  line-height: 0.8rem;
+}
+
+body main .text-animation {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  margin: 2rem;
+  text-align: right;
+}
+
+body main .text-animation h1 {
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: rgba(0, 0, 0, 0.5) 5px 5px 5px;
+  font-size: 5rem;
+  -webkit-animation: slide-in 7s;
+          animation: slide-in 7s;
+}
+
+body main .text-animation h1:nth-child(2) {
+  font-weight: 300;
+}
+
+body main #panel {
+  position: absolute;
+  right: 0;
+  width: 0px;
+  height: 0px;
+  -webkit-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+  background-color: rgba(32, 32, 32, 0.95);
+  -webkit-box-shadow: gray 0 0 5px;
+          box-shadow: gray 0 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body main #panel .panel-header {
+  width: 100%;
+  height: 2rem;
+  background-color: rgba(24, 24, 24, 0.95);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 1rem;
+}
+
+body main #panel .panel-header h5 {
+  text-transform: capitalize;
+  color: #bebebe;
+}
+
+body main #panel .panel-header #cross {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: #dc3232;
+  position: relative;
+}
+
+body main #panel .panel-header #cross:hover {
+  cursor: pointer;
+}
+
+body main #panel .panel-header #cross:hover:after, body main #panel .panel-header #cross:hover:before {
+  content: "";
+  position: absolute;
+  width: 0.1rem;
+  height: 1rem;
+  background-color: #611414;
+  left: calc(50% - 0.05rem);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+body main #panel .panel-header #cross:hover:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+body main #panel #content {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body main #panel #content > div {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 55rem;
+  margin: 0 auto;
+}
+
+body main #panel #content ul {
+  padding: 0 2rem;
+  color: #bebebe;
+}
+
+body main #panel #content ul li a {
+  color: #8cd5f6;
+}
+
+body main #panel #content ul li a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+body main #panel #content #education, body main #panel #content #work-experience {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+}
+
+body main #panel #content #education > p, body main #panel #content #work-experience > p {
+  -webkit-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+          writing-mode: vertical-lr;
+  font-size: 3rem;
+  margin: 1rem 0 1rem 1.5rem;
+}
+
+body main #panel #content #education h4, body main #panel #content #work-experience h4 {
+  font-size: 4.5rem;
+}
+
+body main #panel #content #education h4:before, body main #panel #content #education h4:after, body main #panel #content #work-experience h4:before, body main #panel #content #work-experience h4:after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 50%;
+  right: 320%;
+  width: 300%;
+  height: 1px;
+  border-top: 1px rgba(128, 128, 128, 0.5) dashed;
+}
+
+body main #panel #content #education h4:after, body main #panel #content #work-experience h4:after {
+  right: -120%;
+  top: -50%;
+}
+
+body main #panel #content #education h6, body main #panel #content #work-experience h6 {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
+body main #panel #content #education details, body main #panel #content #work-experience details {
+  background-color: rgba(24, 24, 24, 0.95);
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 1px rgba(128, 128, 128, 0.5) solid;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+body main #panel #content #education details summary, body main #panel #content #work-experience details summary {
+  font-size: 1.5rem;
+}
+
+body main #panel #content #education details summary img, body main #panel #content #work-experience details summary img {
+  height: 1.5rem;
+  position: relative;
+  left: 1rem;
+  top: 0.2rem;
+}
+
+body main #panel #content #education details summary:hover, body main #panel #content #work-experience details summary:hover {
+  cursor: pointer;
+}
+
+body main #panel #content #education details p, body main #panel #content #work-experience details p {
+  border-top: 1px rgba(128, 128, 128, 0.5) solid;
+  margin: 1rem 0 0.5rem 0;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+body main #panel #content #education details:hover, body main #panel #content #work-experience details:hover {
+  -webkit-filter: contrast(90%);
+          filter: contrast(90%);
+}
+
+body main #panel #content #education details[open] summary ~ *, body main #panel #content #work-experience details[open] summary ~ * {
+  -webkit-animation: sweep 1s ease-in-out;
+          animation: sweep 1s ease-in-out;
+}
+
+body main #panel #content #projects {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body main #panel #content #projects h2 {
+  font-size: 2.5rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: rgba(128, 128, 128, 0.5) 0 0 5px;
+          box-shadow: rgba(128, 128, 128, 0.5) 0 0 5px;
+  background-color: rgba(24, 24, 24, 0.95);
+}
+
+body main #panel #content #projects .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+  margin: 1.5rem auto;
+  height: 10rem;
+}
+
+body main #panel #content #projects .card a {
+  width: 30%;
+  height: 100%;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 4rem 4rem, contain;
+  background-position: 80% 100%, 50% 50%;
+}
+
+body main #panel #content #projects .card a:after {
+  content: "";
+  background-image: attr(data-sub-img url);
+  height: 100%;
+  width: 100%;
+  background-size: 100%;
+}
+
+body main #panel #content #projects .card .desc {
+  width: 70%;
+}
+
+body main #panel #content #projects .card .desc h6 {
+  font-size: 1.4rem;
+}
+
+body main #panel #content #projects .card .desc ul {
+  color: #bebebe;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+body main #panel #content #projects .card.card-inverted {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+body main #panel #content #projects .card:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 50%;
+  background-color: rgba(128, 128, 128, 0.5);
+  bottom: -2rem;
+}
+
+body main #panel #content #projects .card:nth-of-type(3):after {
+  display: none;
+}
+
+body main #panel #content #skills {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+}
+
+body main #panel #content #skills h3 {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+body main #panel #content #skills section.progress-bars {
+  width: 100%;
+  display: -ms-grid !important;
+  display: grid !important;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 5rem;
+}
+
+body main #panel #content #skills section.progress-bars label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  padding: 0 2rem;
+}
+
+body main #panel #content #skills section.progress-bars label progress {
+  background-color: rgba(24, 24, 24, 0.95);
+  border-radius: 1rem;
+  border: none;
+  -webkit-box-shadow: rgba(128, 128, 128, 0.5) 1px 1px 5px;
+          box-shadow: rgba(128, 128, 128, 0.5) 1px 1px 5px;
+  margin-top: 0.5rem;
+}
+
+body main #panel #content #skills section.progress-bars label progress.green-1::-webkit-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-1::-moz-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-1::-webkit-progress-value {
+  background-color: green;
+}
+
+body main #panel #content #skills section.progress-bars label progress.green-2::-webkit-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-2::-moz-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-2::-webkit-progress-value {
+  background-color: #538000;
+}
+
+body main #panel #content #skills section.progress-bars label progress.green-3::-webkit-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-3::-moz-progress-bar, body main #panel #content #skills section.progress-bars label progress.green-3::-webkit-progress-value {
+  background-color: #6d8000;
+}
+
+body main #panel #content #skills section.progress-bars label progress::-webkit-progress-bar, body main #panel #content #skills section.progress-bars label progress::-moz-progress-bar, body main #panel #content #skills section.progress-bars label progress::-webkit-progress-value {
+  border-radius: 1rem;
+}
+
+body main #panel #content #skills section.progress-bars label:before {
+  content: attr(data-level);
+  position: absolute;
+  color: #bebebe;
+  font-style: italic;
+  font-size: 0.8rem;
+  right: 2rem;
+  top: 25%;
+  opacity: 1;
+}
+
+body main #panel #content #skills section.words {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+body main #panel #content #skills section.words p {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(24, 24, 24, 0.95);
+  -webkit-transition: all ease 300ms;
+  transition: all ease 300ms;
+  -webkit-box-shadow: rgba(128, 128, 128, 0.5) 2px 2px 1px;
+          box-shadow: rgba(128, 128, 128, 0.5) 2px 2px 1px;
+}
+
+body main #panel #content #skills section.words p:hover {
+  background-color: rgba(128, 128, 128, 0.5);
+  cursor: default;
+}
+
+body main #panel[data-panel-opened="true"] {
+  width: 60%;
+  height: 100%;
+}
+
+body[data-desktop-mode="windows"] {
+  background: linear-gradient(10deg, #84b2dd 0%, #8dc2da 50%, #1cbcca 100%);
+  -ms-grid-rows: auto 3.5rem;
+      grid-template-rows: auto 3.5rem;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body[data-desktop-mode="windows"] header {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: transparent;
+  height: 3.5rem;
+}
+
+body[data-desktop-mode="windows"] header .center {
+  margin: 0;
+  gap: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body[data-desktop-mode="windows"] header .right {
+  height: 100%;
+  width: 100%;
+}
+
+body[data-desktop-mode="windows"] header .right a {
+  background-color: orange;
+  -webkit-box-shadow: orange 0 0 10px;
+          box-shadow: orange 0 0 10px;
+}
+
+body[data-desktop-mode="windows"] main {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+body[data-desktop-mode="windows"] nav {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+body[data-desktop-mode="windows"] nav ul.taskbar {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body[data-desktop-mode="windows"] nav ul.taskbar > li {
+  width: 3.5rem;
+  margin: 0 0.5rem;
+}
+
+body[data-desktop-mode="windows"] nav a#signature {
+  height: 3.5rem;
+  cursor: pointer;
+}
+
+body[data-desktop-mode="windows"] nav a#signature:before {
+  background-image: url("../images/ubuntu.png");
+  background-size: 60%;
+}
+
+@-webkit-keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@-webkit-keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@-webkit-keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    background-color: red;
+  }
+  50% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+}
+
+@keyframes floating {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    background-color: red;
+  }
+  50% {
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
+  }
+  100% {
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
+  }
+}
+
+@-webkit-keyframes tremble {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-box-shadow: inherit inherit inherit 50px;
+            box-shadow: inherit inherit inherit 50px;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  65%, 75%, 85%, 95% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+}
+
+@keyframes tremble {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-box-shadow: inherit inherit inherit 50px;
+            box-shadow: inherit inherit inherit 50px;
+  }
+  60%, 70%, 80%, 90%, 100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  65%, 75%, 85%, 95% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+}
+
+@-webkit-keyframes hoverMainIcon {
+  0% {
+  }
+  100% {
+    -webkit-transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2) rotate(360deg);
+  }
+}
+
+@keyframes hoverMainIcon {
+  0% {
+  }
+  100% {
+    -webkit-transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2) rotate(360deg);
+  }
+}
+
+@-webkit-keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -10px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
