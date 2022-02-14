@@ -367,12 +367,7 @@ body main #panel .panel-header #cross {
   position: relative;
 }
 
-body main #panel .panel-header #cross:hover {
-  cursor: pointer;
-}
-
-body main #panel .panel-header #cross:hover:after, body main #panel .panel-header #cross:hover:before {
-  content: "";
+body main #panel .panel-header #cross:after, body main #panel .panel-header #cross:before {
   position: absolute;
   width: 0.1rem;
   height: 1rem;
@@ -382,9 +377,17 @@ body main #panel .panel-header #cross:hover:after, body main #panel .panel-heade
           transform: rotate(45deg);
 }
 
-body main #panel .panel-header #cross:hover:after {
+body main #panel .panel-header #cross:after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
+}
+
+body main #panel .panel-header #cross:hover {
+  cursor: pointer;
+}
+
+body main #panel .panel-header #cross:hover:after, body main #panel .panel-header #cross:hover:before {
+  content: "";
 }
 
 body main #panel #content {
@@ -697,6 +700,10 @@ body main #panel[data-panel-opened="true"] {
   height: 100%;
 }
 
+body .phone-nav {
+  display: none;
+}
+
 body[data-desktop-mode="windows"] {
   background: linear-gradient(10deg, #84b2dd 0%, #8dc2da 50%, #1cbcca 100%);
   -ms-grid-rows: auto 3.5rem;
@@ -712,18 +719,21 @@ body[data-desktop-mode="windows"] header {
   right: 0;
   background-color: transparent;
   height: 3.5rem;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
 }
 
 body[data-desktop-mode="windows"] header .center {
-  margin: 0;
+  margin: 0 1rem;
   gap: 0;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
           flex-direction: column-reverse;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -731,14 +741,7 @@ body[data-desktop-mode="windows"] header .center {
 }
 
 body[data-desktop-mode="windows"] header .right {
-  height: 100%;
-  width: 100%;
-}
-
-body[data-desktop-mode="windows"] header .right a {
-  background-color: orange;
-  -webkit-box-shadow: orange 0 0 10px;
-          box-shadow: orange 0 0 10px;
+  display: none;
 }
 
 body[data-desktop-mode="windows"] main {
@@ -746,6 +749,37 @@ body[data-desktop-mode="windows"] main {
   grid-row: 1;
   -ms-grid-column: 1;
   grid-column: 1;
+}
+
+body[data-desktop-mode="windows"] main #panel .panel-header {
+  padding-right: 0;
+}
+
+body[data-desktop-mode="windows"] main #panel .panel-header #cross {
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1 / 1;
+}
+
+body[data-desktop-mode="windows"] main #panel .panel-header #cross:after, body[data-desktop-mode="windows"] main #panel .panel-header #cross:before {
+  -webkit-transform: translateY(50%) rotate(45deg);
+          transform: translateY(50%) rotate(45deg);
+}
+
+body[data-desktop-mode="windows"] main #panel .panel-header #cross::before {
+  -webkit-transform: translateY(50%) rotate(-45deg);
+          transform: translateY(50%) rotate(-45deg);
+}
+
+body[data-desktop-mode="windows"] main #panel .panel-header #cross:hover:after, body[data-desktop-mode="windows"] main #panel .panel-header #cross:hover:before {
+  background-color: white;
+}
+
+body[data-desktop-mode="windows"] main #panel[data-panel-opened="true"] .panel-header #cross:after, body[data-desktop-mode="windows"] main #panel[data-panel-opened="true"] .panel-header #cross:before {
+  content: "";
 }
 
 body[data-desktop-mode="windows"] nav {
@@ -782,114 +816,8 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   background-size: 60%;
 }
 
-@-webkit-keyframes slide-in {
-  0%, 90% {
-    -webkit-transform: translateX(110%);
-            transform: translateX(110%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-}
-
-@keyframes slide-in {
-  0%, 90% {
-    -webkit-transform: translateX(110%);
-            transform: translateX(110%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-}
-
-@-webkit-keyframes loading-fade-background {
-  from {
-    opacity: 1;
-    visibility: visible;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@keyframes loading-fade-background {
-  from {
-    opacity: 1;
-    visibility: visible;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@-webkit-keyframes loading-bar {
-  0% {
-    width: 0;
-  }
-  50% {
-    width: 1.16rem;
-  }
-  60% {
-    width: 3.48rem;
-  }
-  100% {
-    width: 11.6rem;
-  }
-}
-
-@keyframes loading-bar {
-  0% {
-    width: 0;
-  }
-  50% {
-    width: 1.16rem;
-  }
-  60% {
-    width: 3.48rem;
-  }
-  100% {
-    width: 11.6rem;
-  }
-}
-
-@-webkit-keyframes shine {
-  0%, 50%, 100% {
-    opacity: 1;
-  }
-  25%, 75% {
-    opacity: 0.3;
-  }
-}
-
-@keyframes shine {
-  0%, 50%, 100% {
-    opacity: 1;
-  }
-  25%, 75% {
-    opacity: 0.3;
-  }
-}
-
-@-webkit-keyframes loading-fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes loading-fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+.loading-screen {
+  visibility: hidden;
 }
 
 @-webkit-keyframes floating {
@@ -995,6 +923,116 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   100% {
     opacity: 1;
     margin-left: 0px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  html {
+    font-size: 12px;
+    overflow: hidden;
+  }
+  body[data-desktop-mode="windows"] {
+    min-width: 300;
+  }
+  body[data-desktop-mode="windows"] header {
+    height: 2rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    grid-column: 1 / 3;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    background-color: rgba(32, 32, 32, 0.95);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    padding-left: 1rem;
+  }
+  body[data-desktop-mode="windows"] header .center {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+  body[data-desktop-mode="windows"] header .right {
+    justify-self: flex-end;
+    -ms-flex-item-align: initial;
+        -ms-grid-row-align: initial;
+        align-self: initial;
+    height: 100%;
+  }
+  body[data-desktop-mode="windows"] nav > span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.5rem;
+    -webkit-animation: none;
+            animation: none;
+  }
+  body[data-desktop-mode="windows"] nav > span a#signature {
+    height: 100%;
+  }
+  body[data-desktop-mode="windows"] nav > span a#signature:before {
+    background-size: contain;
+    background-image: url("../images/home.png");
+  }
+  body[data-desktop-mode="windows"] nav > span a#signature:hover, body[data-desktop-mode="windows"] nav > span a#signature:active {
+    -webkit-animation: none;
+            animation: none;
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar li:nth-child(2) {
+    margin-right: 5.25rem;
+  }
+  body[data-desktop-mode="windows"] main {
+    padding-top: 2rem;
+  }
+  body[data-desktop-mode="windows"] main #panel {
+    top: 2rem;
+    width: 0;
+    height: 0;
+  }
+  body[data-desktop-mode="windows"] main #panel[data-panel-opened="true"] {
+    width: 100%;
+    height: calc(100% - 2rem);
+  }
+  body[data-desktop-mode="windows"] main #panel #content #projects .card {
+    height: auto;
+    width: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  body[data-desktop-mode="windows"] main #panel #content #projects .card > a {
+    margin: 1rem 0;
+    min-height: 5rem;
+    min-width: 5rem;
+  }
+  body[data-desktop-mode="windows"] main .text-animation h1 {
+    font-size: 3.5rem;
   }
 }
 /*# sourceMappingURL=styles.css.map */

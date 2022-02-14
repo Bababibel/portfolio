@@ -52,6 +52,11 @@ const loadingProgress = document.getElementById('loading-progress')
 const loadingP = document.getElementById('loading-p')
 
 function desktopMode() {
+    if (window.screen.width <= 700) {
+        // Phone mode
+        togglePanel()
+        return
+    }
     // Swap a value to another, but right before, reset loading-screen background to hide the quick changes before the page reload
     replayAnimation(loadingScreen)
     replayAnimation(indicator)
@@ -69,5 +74,15 @@ function replayAnimation(element) {
     element.offsetHeight; /* trigger reflow */
     element.style.animation = null; 
 }
+
+
+/* Window size changed (detect small screen to put then on windows desktop mode) */
+function windowSizeChanged() {
+    if (window.screen.width <= 700) {
+        body.dataset.desktopMode = "windows"
+    }
+}
+windowSizeChanged()
+window.addEventListener('resize', windowSizeChanged)
 
 
