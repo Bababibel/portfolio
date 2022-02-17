@@ -1,5 +1,11 @@
 @charset "UTF-8";
-@import url("../fonts/*");
+@font-face {
+  font-family: 'Ubuntu';
+  src: url("../fonts/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -536,8 +542,10 @@ body main #panel #content #projects .card {
       -ms-flex-align: center;
           align-items: center;
   width: 90%;
-  margin: 1.5rem auto;
-  height: 10rem;
+  margin: 3rem auto;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 body main #panel #content #projects .card a {
@@ -816,8 +824,114 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   background-size: 60%;
 }
 
-.loading-screen {
-  visibility: hidden;
+@-webkit-keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in {
+  0%, 90% {
+    -webkit-transform: translateX(110%);
+            transform: translateX(110%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes loading-fade-background {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 1.16rem;
+  }
+  60% {
+    width: 3.48rem;
+  }
+  100% {
+    width: 11.6rem;
+  }
+}
+
+@-webkit-keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes shine {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.3;
+  }
+}
+
+@-webkit-keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes loading-fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @-webkit-keyframes floating {
@@ -926,9 +1040,21 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+  body main #panel[data-panel-opened="true"] {
+    width: 80% !important;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   html {
     font-size: 14px;
+  }
+  body main #panel[data-panel-opened="true"] {
+    width: 90% !important;
   }
 }
 
@@ -1015,7 +1141,7 @@ body[data-desktop-mode="windows"] nav a#signature:before {
     height: 0;
   }
   body[data-desktop-mode="windows"] main #panel[data-panel-opened="true"] {
-    width: 100%;
+    width: 100% !important;
     height: calc(100% - 2rem);
   }
   body[data-desktop-mode="windows"] main #panel #content #projects .card {

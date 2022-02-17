@@ -1,4 +1,10 @@
-@import url('../fonts/*');
+//@import url('../fonts/*');
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 @import 'variables.scss';
 
 * {
@@ -152,8 +158,7 @@ body {
                 }
             }
             a#signature {
-            transition: all 300ms ease-in-out;
-
+                transition: all 300ms ease-in-out;
                 display: inline-block;
                 height: 100%;
                 width: 100%;
@@ -389,8 +394,8 @@ body {
                         justify-content: center;
                         align-items: center;
                         width: 90%;
-                        margin: 1.5rem auto;
-                        height: 10rem;
+                        margin: 3rem auto;
+                        height: max-content;
                         a {
                             // 2 background images : first one is the little sub img, the second is the main
                             width: 30%;
@@ -473,7 +478,7 @@ body {
                                 }
                                 &::-webkit-progress-bar, &::-moz-progress-bar, &::-webkit-progress-value {
                                     border-radius: 1rem;
-                                }
+                                }                                
                             }
                             &:before {
                                 content: attr(data-level);
@@ -485,6 +490,8 @@ body {
                                 top: 25%;
                                 opacity: 1;
                             }
+                            
+                            
                         }
                     }
                     section.words {
@@ -601,94 +608,9 @@ body {
     }
 }
 
-.loading-screen {
-    visibility: hidden;
-}
-//@import 'loading_animations.scss';
+// .loading-screen {
+//     visibility: hidden;
+// }
+@import 'loading_animations.scss';
 @import 'animations.scss';
 @import 'queries.scss';
-
-@media only screen and (max-width: 700px) {
-    html {
-        font-size: 12px;
-        overflow: hidden;
-    }
-    body[data-desktop-mode="windows"] {
-        min-width: 300;
-
-        header {
-            height: 2rem;
-            position: relative;
-            display: flex;
-            width: 100%;
-            grid-column: 1 / 3;
-            grid-row: 1;
-            background-color: $greyBackground;
-            align-items: center;
-            justify-content: space-between;
-            grid-template-columns: repeat(3, 1fr);
-            padding-left: 1rem;
-            .center {
-                flex-direction: row;
-                gap: 1rem;
-                margin-right: 1rem;
-            }
-            .right {
-                justify-self: flex-end;
-                align-self: initial;
-                height: 100%;
-            }
-        }
-        nav {
-            > span {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: $windowsTaskBarHeight;
-                animation: none;
-                a#signature {
-                    height: 100%;
-                    &:before {
-                        background-size: contain;
-                        background-image: url('../images/home.png');
-                    }
-                    &:hover, &:active {
-                        animation: none;                    
-                    }
-                }
-            }
-            ul.taskbar {
-                justify-content: center;
-                li:nth-child(2) {
-                    margin-right: $windowsTaskBarHeight*1.5;
-                }
-            }
-        }
-        main {
-            padding-top: 2rem;
-            #panel {
-                top: 2rem;
-                width: 0;
-                height: 0;
-                &[data-panel-opened="true"] {
-                    width: 100%;
-                    height: calc(100% - 2rem);
-                }
-                #content #projects .card {
-                    height: auto;
-                    width: 100%;
-                    > a {
-                        margin: 1rem 0;
-                        min-height: 5rem;
-                        min-width: 5rem;
-                    }
-                    flex-direction: column;
-                }
-            }
-            .text-animation h1 {
-                font-size: 3.5rem;
-            }
-        }
-    }  
-}
