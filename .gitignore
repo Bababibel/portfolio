@@ -1,5 +1,6 @@
 .vscode/*
 *.css.map
 *.css
+styles.css.map
 !styles.css
 NUL

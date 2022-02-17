@@ -13,9 +13,14 @@
   padding: 0;
 }
 
+html, body {
+  height: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
 body {
   width: 100vw;
-  height: 100vh;
   background: linear-gradient(45deg, #000c8e 0%, #9f1f1f 50%, #543800 100%);
   color: white;
   font-family: 'Ubuntu', sans-serif;
@@ -25,7 +30,6 @@ body {
       grid-template-columns: 5rem auto;
   -ms-grid-rows: 1.8rem auto;
       grid-template-rows: 1.8rem auto;
-  overflow: hidden;
 }
 
 body .loading-screen {
@@ -50,6 +54,7 @@ body .loading-screen {
       -ms-flex-align: center;
           align-items: center;
   gap: 2rem;
+  pointer-events: none;
 }
 
 body .loading-screen #loading-p {
@@ -297,6 +302,7 @@ body main > a.icon:active {
 
 body main > a.icon:after {
   content: attr(data-title);
+  text-shadow: 1px 1px 10px black;
   position: absolute;
   bottom: 0.4rem;
   text-align: center;
@@ -768,8 +774,8 @@ body[data-desktop-mode="windows"] main #panel .panel-header #cross {
   padding: 0;
   margin: 0;
   height: 100%;
-  width: auto;
   aspect-ratio: 1 / 1;
+  width: auto;
 }
 
 body[data-desktop-mode="windows"] main #panel .panel-header #cross:after, body[data-desktop-mode="windows"] main #panel .panel-header #cross:before {
@@ -1065,6 +1071,9 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   }
   body[data-desktop-mode="windows"] {
     min-width: 300;
+    -ms-grid-rows: auto 5.25rem;
+        grid-template-rows: auto 5.25rem;
+    background: linear-gradient(45deg, #575c94 0%, #9f6c1f 50%, #412358 100%);
   }
   body[data-desktop-mode="windows"] header {
     height: 2rem;
@@ -1104,33 +1113,74 @@ body[data-desktop-mode="windows"] nav a#signature:before {
         align-self: initial;
     height: 100%;
   }
+  body[data-desktop-mode="windows"] nav {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
   body[data-desktop-mode="windows"] nav > span {
     position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3.5rem;
+    height: 5.25rem;
     -webkit-animation: none;
             animation: none;
   }
   body[data-desktop-mode="windows"] nav > span a#signature {
-    height: 100%;
+    z-index: 51;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(24, 24, 24, 0.3);
+    border-radius: 50%;
   }
   body[data-desktop-mode="windows"] nav > span a#signature:before {
-    background-size: contain;
+    background-size: 70%;
     background-image: url("../images/home.png");
   }
-  body[data-desktop-mode="windows"] nav > span a#signature:hover, body[data-desktop-mode="windows"] nav > span a#signature:active {
+  body[data-desktop-mode="windows"] nav > span a#signature:hover {
     -webkit-animation: none;
             animation: none;
+    background-color: rgba(128, 128, 128, 0.8);
+  }
+  body[data-desktop-mode="windows"] nav > span:after {
+    display: none;
   }
   body[data-desktop-mode="windows"] nav ul.taskbar {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    z-index: 50;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[5];
+        grid-template-columns: repeat(5, 1fr);
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar li {
+    margin: 0 auto;
+    min-width: 3rem;
+    max-width: 5.25rem !important;
+    width: 100%;
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar li:nth-child(1) {
+    -ms-grid-column: 1;
+    grid-column: 1;
   }
   body[data-desktop-mode="windows"] nav ul.taskbar li:nth-child(2) {
-    margin-right: 5.25rem;
+    -ms-grid-column: 2;
+    grid-column: 2;
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar li:nth-child(3) {
+    -ms-grid-column: 4;
+    grid-column: 4;
+  }
+  body[data-desktop-mode="windows"] nav ul.taskbar li:nth-child(4) {
+    -ms-grid-column: 5;
+    grid-column: 5;
   }
   body[data-desktop-mode="windows"] main {
     padding-top: 2rem;
@@ -1159,6 +1209,27 @@ body[data-desktop-mode="windows"] nav a#signature:before {
   }
   body[data-desktop-mode="windows"] main .text-animation h1 {
     font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  body[data-desktop-mode="windows"] main a:nth-child(3) {
+    -ms-grid-column: 1 !important;
+    grid-column: 1 !important;
+    -ms-grid-row: 2 !important;
+    grid-row: 2 !important;
+  }
+  body[data-desktop-mode="windows"] main a:nth-child(4) {
+    -ms-grid-column: 2 !important;
+    grid-column: 2 !important;
+    -ms-grid-row: 2 !important;
+    grid-row: 2 !important;
+  }
+}
+
+@media only screen and (max-width: 280px) {
+  html {
+    font-size: 10px;
   }
 }
 /*# sourceMappingURL=styles.css.map */
